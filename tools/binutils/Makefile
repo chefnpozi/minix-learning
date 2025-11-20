@@ -2,6 +2,9 @@
 
 .include <bsd.own.mk>
 
+HOST_CFLAGS+=	-O2 -fcommon
+HOST_CXXFLAGS+=	-O2 -fcommon
+
 MODULE=		binutils
 
 GNUHOSTDIST=	${.CURDIR}/../../external/gpl3/binutils/dist
@@ -14,6 +17,7 @@ BRANDING?=	\
 CONFIGURE_ARGS=	--target=${MACHINE_GNU_PLATFORM} --disable-nls \
 		--program-transform-name="s,^,${MACHINE_GNU_PLATFORM}-," \
 		--disable-werror \
+		--with-build-cflags="-O2 -fcommon" \
 		${BRANDING}
 
 .if defined(__MINIX) && ! exists(${GNUHOSTDIST}/gas/m68k-parse.c)

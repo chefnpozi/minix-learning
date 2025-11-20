@@ -196,6 +196,8 @@ Boolean forceJobs = FALSE;
 
 extern Lst parseIncPath;
 
+FILE *debug_file = NULL;
+
 /*
  * For compatibility with the POSIX version of MAKEFLAGS that includes
  * all the options with out -, convert flags to -f -l -a -g -s.

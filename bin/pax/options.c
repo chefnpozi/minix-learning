@@ -133,6 +133,8 @@ static int get_line_error;
 #define	OPT_CHROOT			19
 #endif
 
+char *chdname;
+
 /*
  *	Format specific routine table - MUST BE IN SORTED ORDER BY NAME
  *	(see pax.h for description of each function)

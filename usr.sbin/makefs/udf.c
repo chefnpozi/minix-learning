@@ -90,6 +90,8 @@ float	 meta_fract = (float) UDF_META_PERC / 100.0;
 int	 mmc_profile;			/* emulated profile */
 int	 req_enable, req_disable;
 
+struct udf_create_context context;
+struct udf_disclayout     layout;
 
 /* --------------------------------------------------------------------- */
 
