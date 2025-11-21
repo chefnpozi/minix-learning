@@ -1,0 +1,91 @@
+# MINIX3 内核调试初始化脚本
+
+# 设置架构
+set architecture i386
+set disassembly-flavor intel
+
+# 连接到 QEMU GDB 服务器
+target remote localhost:1234
+
+# 加载内核符号表
+# 使用原始构建目录下的内核文件，确保包含完整的调试符号
+symbol-file obj/home/fengh11/local/code/NJUOS2025/virtualization/my-minix/minix-learning/minix/kernel/kernel
+
+# 设置源码搜索路径
+directory minix/kernel
+directory minix/servers
+directory minix/drivers
+
+# 常用初始断点（可根据需要注释/取消注释）
+# break __k_unpaged_kmain        # 内核主函数
+# break cstart                   # C 代码入口
+# break do_ipc                 	 # 系统调用入口
+
+# 实用的自定义命令
+
+# 显示当前进程信息
+define show-current
+    if proc_ptr != 0
+        printf "Current Process:\n"
+        printf "  Name: %s\n", proc_ptr->p_name
+        printf "  PID: %d\n", proc_ptr->p_nr
+        printf "  Endpoint: %d\n", proc_ptr->p_endpoint
+    else
+        printf "No current process\n"
+    end
+end
+
+# 显示所有进程
+define show-all-procs
+    printf "===== Process Table =====\n"
+    printf "%-4s %-16s %-10s %-8s\n", "PID", "Name", "Endpoint", "State"
+    set $i = -5
+    set $max = 64
+    while $i < $max
+        set $p = &proc[$i + 5]
+        if $p->p_rts_flags != 0x20
+            printf "%-4d %-16s %-10d 0x%-6x\n", $i, $p->p_name, $p->p_endpoint, $p->p_rts_flags
+        end
+        set $i = $i + 1
+    end
+end
+
+# 显示调用栈（带参数）
+define show-stack
+    printf "===== Call Stack =====\n"
+    backtrace
+    printf "\n===== Registers =====\n"
+    info registers
+end
+
+# 启用 TUI 模式（可选，分屏显示源码）
+# layout split
+
+# 设置历史记录
+set history save on
+set history filename ~/.gdb_history_minix
+set history size 10000
+
+# 美化输出
+set print pretty on
+set print array on
+
+echo \n================================================\n
+echo MINIX3 Kernel Debugging Environment Ready!\n
+echo ================================================\n
+echo \n
+echo Useful commands:\n
+echo   continue (c)       - Start/resume execution\n
+echo   break <function>   - Set breakpoint\n
+echo   next (n)          - Step over\n
+echo   step (s)          - Step into\n
+echo   show-current      - Display current process\n
+echo   show-all-procs    - Display process table\n
+echo   show-stack        - Display call stack and registers\n
+echo \n
+echo Suggested first breakpoints:\n
+echo   break __k_unpaged_kmain\n
+echo   break cstart\n
+echo   break do_ipc\n
+echo   break do_fork\n
+echo \n

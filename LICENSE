@@ -1,5 +1,7 @@
 ./build.sh -U -m i386 -V MKDEBUG=yes -u release |& tee ./minix-build.log
 
+export OBJ=$(pwd)/obj$(pwd) MKDEBUG=yes && ./releasetools/x86_cdimage.sh
+
 License
 
 Copyright (c) 1987, 1997, 2006, Vrije Universiteit, Amsterdam,
