@@ -38,12 +38,21 @@
 #if !HAVE_FPURGE
 #include <stdio.h>
 #include <fcntl.h>
+#include <errno.h>
 
-void
+int
 fpurge(FILE *fp)
 {
+	if (fp == NULL) {
+		errno = EBADF;
+		return EOF;
+	}
 #if HAVE___FPURGE
 	__fpurge(fp);
+	return 0;
+#else
+	/* 如果没有 __fpurge,只能尽力而为 */
+	return 0;
 #endif
 }
 #endif

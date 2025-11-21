@@ -22,6 +22,12 @@ BUILD_OSTYPE!= uname -s
 .if ${BUILD_OSTYPE} == "Darwin"
 HOST_CFLAGS+=-O2 -no-cpp-precomp
 .endif
+
+# Allow implicit function declarations and relax type checking for compatibility with older code
+# This allows the code to compile with modern GCC/Clang like it did with older compilers
+HOST_CFLAGS+=-Wno-error=implicit-function-declaration -Wno-error=incompatible-pointer-types
+HOST_CFLAGS+=-Wno-error=int-conversion -Wno-implicit-function-declaration
+
 MAKE_PROGRAM?=	${MAKE}
 
 GNUHOSTDIST?=	${.CURDIR}/../../gnu/dist/${MODULE}

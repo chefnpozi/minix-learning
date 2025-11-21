@@ -6,6 +6,10 @@ NOMAN=		# defined
 
 .include <bsd.own.mk>
 
+# Relax compiler checks for old code compatibility
+HOST_CFLAGS+=-Wno-error=implicit-function-declaration -Wno-error=incompatible-pointer-types
+HOST_CFLAGS+=-Wno-error=int-conversion -Wno-implicit-function-declaration
+
 .ifndef NOCOMPATLIB
 # Use TOOLDIR copy of libnbcompat and associated *.h files
 .-include	"${TOOLDIR}/share/compat/defs.mk"

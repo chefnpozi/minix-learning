@@ -1998,16 +1998,16 @@
 ./usr/share/i18n/iconv                                  minix-base      nls
 ./usr/share/i18n/iconv/iconv.dir                        minix-base      nls
 ./usr/share/info                                        minix-base
-./usr/share/info/as.info                                minix-base      binutils
-./usr/share/info/bfd.info                               minix-base      binutils
-./usr/share/info/binutils.info                          minix-base      binutils
-./usr/share/info/dir                                    minix-base
-./usr/share/info/gprof.info                             minix-base      binutils
-./usr/share/info/info-stnd.info                         minix-base
-./usr/share/info/info.info                              minix-base
-./usr/share/info/ld.info                                minix-base      binutils
-./usr/share/info/texinfo.info                           minix-base
-./usr/share/info/vi.info                                minix-base
+./usr/share/info/as.info                                minix-base      binutils,info
+./usr/share/info/bfd.info                               minix-base      binutils,info
+./usr/share/info/binutils.info                          minix-base      binutils,info
+./usr/share/info/dir                                    minix-base      info
+./usr/share/info/gprof.info                             minix-base      binutils,info
+./usr/share/info/info-stnd.info                         minix-base      info
+./usr/share/info/info.info                              minix-base      info
+./usr/share/info/ld.info                                minix-base      binutils,info
+./usr/share/info/texinfo.info                           minix-base      info
+./usr/share/info/vi.info                                minix-base      info
 ./usr/share/keymaps                                     minix-base
 ./usr/share/legal                                       minix-base
 ./usr/share/legal/COPYRIGHT                             minix-base

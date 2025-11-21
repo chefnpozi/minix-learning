@@ -47,6 +47,9 @@
 #include <stdlib.h>
 #include <string.h>
 
+#if HAVE_ERR_H
+#include <err.h>
+#endif
 #if HAVE_SYS_CDEFS_H
 #include <sys/cdefs.h>
 #endif
@@ -558,6 +561,16 @@ int vasnprintf(char **, size_t, const char *, va_list);
 #if !HAVE_VSNPRINTF
 int vsnprintf(char *, size_t, const char *, va_list);
 #endif
+
+#if HAVE___FPURGE
+void __fpurge(FILE *);
+#endif
+
+#if !HAVE_FPURGE
+int fpurge(FILE *);
+#endif
+
+void mi_vector_hash(const void * __restrict, size_t, uint32_t, uint32_t[3]);
 
 /*
  * getmode() and setmode() are always defined, as these function names
@@ -1280,6 +1293,14 @@ __GEN_ENDIAN_DEC(64, le)
 #if defined(__NetBSD__) || defined(__minix)
 quad_t   strtoq(const char *, char **, int);
 u_quad_t strtouq(const char *, char **, int);
+#endif
+
+/* <wchar.h> - Wide character support */
+#if HAVE_WCHAR_H
+#include <wchar.h>
+#endif
+#if !HAVE_DECL_WCWIDTH
+int wcwidth(wchar_t);
 #endif
 
 #endif	/* !__NETBSD_COMPAT_DEFS_H__ */
