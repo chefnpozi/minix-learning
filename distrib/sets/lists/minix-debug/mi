@@ -517,6 +517,8 @@
 ./usr/libdata/debug/usr/games/strfile.debug             minix-debug     debug
 ./usr/libdata/debug/usr/games/tetris.debug              minix-debug     debug
 ./usr/libdata/debug/usr/games/unstr.debug               minix-debug     debug
+./usr/libdata/debug/usr/games/worm.debug		minix-debug	debug
+./usr/libdata/debug/usr/games/worms.debug		minix-debug	debug
 ./usr/libdata/debug/usr/lib                             minix-debug
 ./usr/libdata/debug/usr/lib/i18n                        minix-debug
 ./usr/libdata/debug/usr/lib/i18n/libBIG5.so.5.0.debug   minix-debug     debug

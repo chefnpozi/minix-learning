@@ -5,7 +5,9 @@ GEN_FILES=	*.bak image kernel *.iso *.iso.gz cdfdimage rootimage src
 
 # LSC detect where were built the objects files
 PROGROOT:= ..
-.if "${MAKEOBJDIR:S,${.CURDIR},,}" != ""
+.if defined(MAKEOBJDIRPREFIX) && exists(${MAKEOBJDIRPREFIX})
+PROGROOT:= ${MAKEOBJDIRPREFIX}${NETBSDSRCDIR}
+.elif "${MAKEOBJDIR:S,${.CURDIR},,}" != ""
 PROGROOT:= ${MAKEOBJDIR:S,releasetools,,}
 .endif
 

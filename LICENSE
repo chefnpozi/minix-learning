@@ -1,3 +1,4 @@
+./build.sh -U -m i386 -V MKDEBUG=yes -u release |& tee ./minix-build.log
 
 License
 

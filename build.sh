@@ -1,4 +1,7 @@
 #! /usr/bin/env sh
+
+export MAKEOBJDIRPREFIX=$(pwd)/obj
+
 #	$NetBSD: build.sh,v 1.308 2015/06/27 06:00:28 matt Exp $
 #
 # Copyright (c) 2001-2011 The NetBSD Foundation, Inc.
@@ -258,6 +261,8 @@ fi
 #
 # }}} End shell feature tests.
 #
+
+export MAKEOBJDIRPREFIX=$(pwd)/obj
 
 progname=${0##*/}
 toppid=$$

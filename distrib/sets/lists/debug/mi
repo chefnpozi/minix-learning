@@ -886,8 +886,6 @@
 ./usr/libdata/debug/usr/games/tetris.debug	comp-games-debug	debug
 ./usr/libdata/debug/usr/games/trek.debug	comp-games-debug	debug
 ./usr/libdata/debug/usr/games/unstr.debug	comp-utils-debug	debug
-./usr/libdata/debug/usr/games/worm.debug	comp-games-debug	debug
-./usr/libdata/debug/usr/games/worms.debug	comp-games-debug	debug
 ./usr/libdata/debug/usr/games/wump.debug	comp-games-debug	debug
 ./usr/libdata/debug/usr/libexec/atf-check.debug	comp-atf-debug		atf,debug
 ./usr/libdata/debug/usr/libexec/atf-cleanup.debug	comp-obsolete		obsolete
