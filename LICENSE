@@ -1,8 +1,12 @@
-./build.sh -U -m i386 -V MKDEBUG=yes -u release |& tee ./minix-build.log
+./build.sh -U -m i386 \
+  -V MKDEBUG=yes \
+  -V MKINFO=no \
+  -V DBG="-O0 -g" \
+  -u release |& tee ./minix-build.log
 
-./build.sh -U -m i386 -V MKDEBUG=yes -V MKINFO=no  -u release |& tee ./minix-build.log
+./build.sh -U -m i386 cleandir
 
-export OBJ=$(pwd)/obj$(pwd) MKDEBUG=yes && ./releasetools/x86_cdimage.sh
+export OBJ=$(pwd)/obj$(pwd) MKDEBUG=yes MKINFO=no && ./releasetools/x86_cdimage.sh
 
 License
 

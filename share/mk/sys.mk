@@ -25,7 +25,8 @@ DBG=	-Os
 .if ${MKMAGIC:Uno} == "yes" || ${MKASR:Uno} == "yes"
 CPPFLAGS+= -D_MINIX_MAGIC=1
 STRIPFLAG= -s
-DBG=-g
+# Allow DBG to be overridden from command line
+DBG?=-g
 .endif
 
 #LSC: Be a bit smarter about the default compiler
